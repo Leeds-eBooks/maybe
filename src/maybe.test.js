@@ -49,7 +49,6 @@ test('orJustCall', () => {
   const orValue = x.orJustCall(() => 'hi')
   expect(orValue).toBe('hi')
   const y = maybe('hello')
-  expect(y.orJustCall()).toBe('hello')
   expect(y.orJustCall(() => 'bye')).toBe('hello')
   const fn = jest.fn(() => 'bye')
   expect(y.orJustCall(fn)).toBe('hello')
