@@ -44,6 +44,18 @@ test('orJust', () => {
   expect(y.orJust()).toBe('hello')
 })
 
+test('orJustCall', () => {
+  const x = maybe(null)
+  const orValue = x.orJustCall(() => 'hi')
+  expect(orValue).toBe('hi')
+  const y = maybe('hello')
+  expect(y.orJustCall()).toBe('hello')
+  expect(y.orJustCall(() => 'bye')).toBe('hello')
+  const fn = jest.fn(() => 'bye')
+  expect(y.orJustCall(fn)).toBe('hello')
+  expect(fn).not.toHaveBeenCalled()
+})
+
 test('map value', () => {
   const x = maybe('bob')
   const result = x.map(v => v.toUpperCase())
