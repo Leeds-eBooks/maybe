@@ -14,6 +14,7 @@ declare class Just<A> {
   map<B: AnyVal>(f: (_: A) => B): Maybe<B>;
   orElse<B>(m: Maybe<B>): Maybe<A>;
   orJust<B>(value: B): A;
+  orJustCall<B>(f: () => B): A;
 }
 
 declare class Nothing {
@@ -26,6 +27,7 @@ declare class Nothing {
   map<A, B: AnyVal>(f: (_: A) => B): Nothing;
   orElse<B>(m: Maybe<B>): Maybe<B>;
   orJust<B>(value: B): B;
+  orJustCall<B>(f: () => B): B;
 }
 
 declare export function just<T>(value: AnyVal): Just<T>;

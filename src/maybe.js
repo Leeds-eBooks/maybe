@@ -55,6 +55,10 @@ class Just<A> {
     return this.value
   }
 
+  orJustCall(): A {
+    return this.value
+  }
+
 }
 
 class Nothing {
@@ -91,6 +95,10 @@ class Nothing {
 
   orJust<B>(value: B): B {
     return value
+  }
+
+  orJustCall<B>(f: () => B): B {
+    return f()
   }
 
 }
